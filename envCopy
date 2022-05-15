@@ -1,0 +1,3 @@
+PORT=3005
+DEVSERVER=http://localhost
+DATABASEURL=mongodb://localhost:27017/Test
