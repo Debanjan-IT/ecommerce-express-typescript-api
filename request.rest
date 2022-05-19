@@ -1,0 +1,36 @@
+# Check
+GET http://localhost:3005/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODY4YTE3YjE1MzU2ZjMwOGZkNTU2MCIsImZpcnN0X25hbWUiOiJUZXN0IiwibGFzdF9uYW1lIjoiU1Rlc3QiLCJlbWFpbCI6InRlc3QzQGdtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNjUyOTg4NTE0fQ.mZuz9iE1fpGwKeV1b2nO-pY5pZuOi3cfZbM0eT7fb24
+
+###
+# Get user
+GET http://localhost:3005/user/get-user
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODY4YTE3YjE1MzU2ZjMwOGZkNTU2MCIsImZpcnN0X25hbWUiOiJUZXN0IiwibGFzdF9uYW1lIjoiU1Rlc3QiLCJlbWFpbCI6InRlc3QzQGdtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNjUyOTg5MTQxfQ.D08jxR5ciz-J6q_8s_A5IkQZ3BoIIpiXMgglvPQGAvg
+
+
+
+###
+# Login
+POST http://localhost:3005/user/login
+Content-Type: application/json
+
+{
+    "email": "test3@gmail.com",
+    "password": "12345678"
+}
+
+
+###
+# Register
+POST http://localhost:3005/user/register
+Content-Type: application/json
+
+{
+	"first_name": "Test",
+    "last_name": "STest",
+    "email": "test3@gmail.com",
+    "password": "12345678",
+    "role": "USER"
+}

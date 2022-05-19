@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import reg_validator from '../validators/user_registration_validator'
 import log_validator from '../validators/user_login_validator'
+import * as jwt from 'jsonwebtoken'
 import { encrypt, decrypt } from '../important_stuff/hash_password'
 import userModel from '../models/user_model'
 export async function register (req: Request, res: Response) {
@@ -83,8 +84,9 @@ export async function login (req: Request, res: Response) {
                         email: fetchedUser.email,
                         role: fetchedUser.role
                     }
+                    let access_token = jwt.sign(userDetails, process.env.ACCESSTOKENSECRET)
                     res.send({
-                        userDetails,
+                        Token: access_token,
                         message: 'User loggedin.'
                     })
                     mongoose.connection.close();
@@ -109,11 +111,20 @@ export async function login (req: Request, res: Response) {
     }
 }
 
+export async function getUser (req: Request, res: Response) {
+    res.send({
+        user: JSON.parse(req.user),
+        status: "Success get user.",
+        message: "Running"
+    })
+}
 
 export async function refresh_token (req: Request, res: Response) {
+    let access_token = jwt.sign(JSON.parse(req.user), process.env.ACCESSTOKENSECRET)
     res.send({
-      status: "Success user refresh token",
-      message: "Running"
+        Token: access_token,
+        status: "Success user refresh token",
+        message: "Running"
     })
 }
 
